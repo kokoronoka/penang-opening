@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Kiosk Concept Demo — HUD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kiosk_demo.css">
+</head>
+<body>
+
+<div id="kiosk">
+  <div id="grid"></div>
+  <div id="scanline"></div>
+
+  <div id="chrome" class="hidden">
+    <button id="homeBtn" onclick="goHome()">⌂</button>
+    <div id="crumbs" class="mono">SYS <span class="path" id="crumbPath"></span></div>
+    <div id="status" class="mono"><span class="dot"></span> LIVE</div>
+  </div>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home" onclick="go('menu')">
+    <div class="reticle">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="core mono"><span>TOUCH TO</span><span>BEGIN</span></div>
+    </div>
+    <h1>Welcome</h1>
+    <p class="sub">A calm space, a few steps away.</p>
+    <div class="tap-hint mono">TAP ANYWHERE // INITIATE</div>
+  </div>
+
+  <!-- MAIN MENU -->
+  <div class="page" id="page-menu">
+    <div class="menu-head">
+      <div class="eyebrow mono">MAIN MENU</div>
+      <h2>Where would you like to go?</h2>
+    </div>
+    <div class="grid">
+      <button class="tile brk" onclick="go('services')"><div class="num mono">01</div><div><h3>Services</h3><span class="desc">Treatments, therapies & sessions on offer today.</span></div></button>
+      <button class="tile brk" onclick="go('schedule')"><div class="num mono">02</div><div><h3>Today's Schedule</h3><span class="desc">Live class times and room assignments.</span></div></button>
+      <button class="tile brk" onclick="go('facilities')"><div class="num mono">03</div><div><h3>Facilities</h3><span class="desc">Explore the retreat, floor by floor.</span></div></button>
+      <button class="tile brk" onclick="go('about')"><div class="num mono">04</div><div><h3>About Us</h3><span class="desc">Our story and approach to wellness.</span></div></button>
+      <button class="tile brk" onclick="go('book')"><div class="num mono">05</div><div><h3>Book a Visit</h3><span class="desc">Reserve a slot in under a minute.</span></div></button>
+      <button class="tile brk" onclick="go('contact')"><div class="num mono">06</div><div><h3>Contact & Directions</h3><span class="desc">Find us, call us, or ask a question.</span></div></button>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="page sub" id="page-services">
+    <div class="eyebrow mono">SERVICES</div>
+    <h2>Choose a treatment</h2>
+    <p class="lead">Tap any card to see what's included, or head back to explore something else.</p>
+    <div class="card-row">
+      <div class="mini-card brk" onclick="go('service-detail')"><h4>Signature Massage</h4><p>60 min · full body · warm oil</p></div>
+      <div class="mini-card brk" onclick="go('service-detail')"><h4>Herbal Steam Ritual</h4><p>40 min · botanical steam room</p></div>
+      <div class="mini-card brk" onclick="go('service-detail')"><h4>Guided Breathwork</h4><p>30 min · small group session</p></div>
+    </div>
+    <div class="back-row"><button class="btn ghost" onclick="goBack()">← Back to menu</button></div>
+  </div>
+
+  <!-- SERVICE DETAIL -->
+  <div class="page sub" id="page-service-detail">
+    <div class="eyebrow mono">SERVICES / DETAIL</div>
+    <h2>Signature Massage</h2>
+    <p class="lead">A 60-minute full body treatment using warm botanical oils, designed to release tension held in the shoulders, back, and legs. Recommended before or after a long day of travel.</p>
+    <div class="back-row"><button class="btn" onclick="go('services')">← Back to Services</button></div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="page sub" id="page-schedule">
+    <div class="eyebrow mono">TODAY'S SCHEDULE</div>
+    <h2>Live sessions</h2>
+    <div style="max-width:520px;">
+      <div class="slot"><span class="time">09:00</span><span class="name">Sunrise Yoga</span><span class="with">STUDIO A</span></div>
+      <div class="slot"><span class="time">11:30</span><span class="name">Breathwork Circle</span><span class="with">GARDEN ROOM</span></div>
+      <div class="slot"><span class="time">14:00</span><span class="name">Herbal Steam</span><span class="with">WET ROOM 2</span></div>
+      <div class="slot"><span class="time">17:00</span><span class="name">Evening Stretch</span><span class="with">STUDIO A</span></div>
+    </div>
+    <div class="back-row"><button class="btn ghost" onclick="goBack()">← Back to menu</button></div>
+  </div>
+
+  <!-- FACILITIES -->
+  <div class="page sub" id="page-facilities">
+    <div class="eyebrow mono">FACILITIES</div>
+    <h2>Explore the space</h2>
+    <div class="card-row">
+      <div class="mini-card brk"><h4>Ground Floor</h4><p>Reception, lounge, tea bar</p></div>
+      <div class="mini-card brk"><h4>First Floor</h4><p>Treatment rooms 1–6</p></div>
+      <div class="mini-card brk"><h4>Rooftop</h4><p>Open-air yoga deck</p></div>
+    </div>
+    <div class="back-row"><button class="btn ghost" onclick="goBack()">← Back to menu</button></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="page sub" id="page-about">
+    <div class="eyebrow mono">ABOUT US</div>
+    <h2>Our approach</h2>
+    <p class="lead">We believe rest is not indulgence but maintenance. Every ritual here is built around slowing down: fewer choices, quieter rooms, longer breaths.</p>
+    <div class="back-row"><button class="btn ghost" onclick="goBack()">← Back to menu</button></div>
+  </div>
+
+  <!-- BOOK -->
+  <div class="page sub" id="page-book">
+    <div class="eyebrow mono">BOOK A VISIT</div>
+    <h2>Reserve your slot</h2>
+    <div class="field"><label>Name</label><input placeholder="Your name" /></div>
+    <div class="field"><label>Phone</label><input placeholder="+60 ..." /></div>
+    <button class="btn" style="margin-top:6px;" onclick="go('book-confirm')">Confirm Booking →</button>
+    <div class="back-row"><button class="btn ghost" onclick="goBack()">← Back to menu</button></div>
+  </div>
+
+  <div class="page sub" id="page-book-confirm" style="align-items:center; justify-content:center;">
+    <div class="confirm-box brk">
+      <h3>You're all set</h3>
+      <p>A team member will confirm your slot shortly. Thank you.</p>
+    </div>
+    <div class="back-row" style="text-align:center; width:100%;"><button class="btn ghost" onclick="goHome()" style="margin-top:24px;">Return Home</button></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="page sub" id="page-contact">
+    <div class="eyebrow mono">CONTACT & DIRECTIONS</div>
+    <h2>Find us</h2>
+    <p class="lead">Level 2, Wellness Wing · Open daily 9am–8pm · +60 12-345 6789</p>
+    <div class="back-row"><button class="btn ghost" onclick="goBack()">← Back to menu</button></div>
+  </div>
+
+  <div id="idleBar"></div>
+</div>
+
+<script src="kiosk_demo.js"></script>
+
+</body>
+</html>

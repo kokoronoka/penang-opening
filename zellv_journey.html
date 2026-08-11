@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Zéll-V — Our Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="zellv_journey.css">
+</head>
+<body>
+
+<div id="kiosk">
+
+  <div id="chrome" class="hidden">
+    <button id="homeBtn" onclick="goHome()">⌂</button>
+    <div id="crumbs">ZÉLL-V <span class="path" id="crumbPath"></span></div>
+    <div id="chromeRight">
+      <div id="status"><span class="dot"></span> <span data-i18n="status-label">OUR JOURNEY</span></div>
+      <button id="langToggle" class="brk" onclick="toggleLanguage()">中文</button>
+    </div>
+  </div>
+  <div id="topProgress"><div class="fill" id="topProgressFill"></div></div>
+
+  <!-- SPLASH -->
+  <div class="page active" id="page-splash" onclick="go('vision')">
+    <div class="shader-bg" id="shaderBg"></div>
+    <div class="splash-collage">
+      <img class="c1" src="assets/images/2000display.png" alt="">
+      <img class="c2" src="assets/images/2007display1.png" alt="">
+      <img class="c3" src="assets/images/2009display1.png" alt="">
+      <img class="c4" src="assets/images/2000display2.png" alt="">
+      <img class="c5" src="assets/images/2010display1.png" alt="">
+      <img class="c6" src="assets/images/2007display2.png" alt="">
+      <img class="c7" src="assets/images/homescreen.jpg" alt="">
+    </div>
+    <div class="bokeh b1"></div>
+    <div class="bokeh b2"></div>
+    <div class="bokeh b3"></div>
+    <div class="bokeh b4"></div>
+    <div class="bokeh b5"></div>
+    <div class="bokeh b6"></div>
+    <div class="splash-shimmer"></div>
+    <div class="splash-inner">
+      <div class="emblem">
+        <div class="emblem-ring r1"></div>
+        <div class="emblem-ring r2"></div>
+        <div class="emblem-ring r3"></div>
+        <div class="emblem-core"><span class="script">V</span></div>
+      </div>
+      <div class="splash-eyebrow" data-i18n="splash-eyebrow">Welcome To</div>
+      <h1 class="serif" data-i18n="splash-h1">Our Journey</h1>
+      <div class="brandmark">Z&Eacute;LL-<span class="script">V</span> &nbsp;&middot;&nbsp; PENANG WELLNESS</div>
+      <div class="tap-hint"><span class="pulse-inner" data-i18n="splash-taphint">TAP ANYWHERE TO BEGIN</span></div>
+    </div>
+  </div>
+
+  <!-- VISION / HOME -->
+  <div class="page" id="page-vision">
+    <div class="vision-scroll" id="visionScroll">
+
+      <div class="v-intro reveal">
+        <div class="v-photo pos-left brk">
+          <img src="assets/images/OurVisionDisplay1.jpg" alt="Zéll-V brand photo 1" onerror="this.closest('.v-photo').classList.add('img-missing')">
+          <div class="placeholder-fallback"><span>📷</span><span>images/vision-1.jpg</span></div>
+        </div>
+        <div class="v-photo pos-right brk">
+          <img src="assets/images/OurVisionDisplay2.jpg" alt="Zéll-V brand photo 2" onerror="this.closest('.v-photo').classList.add('img-missing')">
+          <div class="placeholder-fallback"><span>📷</span><span>images/vision-2.jpg</span></div>
+        </div>
+
+        <div class="v-intro-text">
+        <div class="eyebrow" data-i18n="vision-eyebrow">Our Vision</div>
+        <h2 class="serif" data-i18n="vision-h2">From Beauty to Wellness, From Local to Global.</h2>
+        <p data-i18n="vision-p">Beginning with beauty, driven by a mission for health. Moving forward, we integrate advanced technologies, precision health management and professional medical concepts to build a trusted, one-stop Wellness brand.</p>
+
+        <div class="hero-number">
+          <div class="num serif">26</div>
+          <div class="hero-years script" data-i18n="hero-years">Years</div>
+          <div class="hero-caps">
+            <span data-i18n="hero-cap-1">of Passion.</span>
+            <span data-i18n="hero-cap-2">One Vision.</span>
+            <span data-i18n="hero-cap-3">Endless Possibilities.</span>
+          </div>
+        </div>
+        <div class="hero-closing-wrap">
+          <hr class="hero-divider">
+          <p class="hero-closing" data-i18n="hero-closing">26 years of staying true to our original aspiration and continuously innovating — <strong>all to protect every journey towards health and beauty.</strong></p>
+        </div>
+
+        <div class="scroll-hint">
+          <span data-i18n="scroll-hint">Scroll for Our Journey</span>
+          <div class="scroll-chevron"></div>
+        </div>
+        </div>
+      </div>
+
+      <div class="timeline-wrap">
+        <div class="timeline-label" data-i18n="timeline-label">Our Journey — Tap a Year</div>
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item" data-year="2000" onclick="goFromTimeline('year-2000', event)">
+          <div class="timeline-node"><span>2000</span></div>
+          <div class="timeline-card brk">
+            <div class="tc-year serif">2000</div>
+            <h3 data-i18n="tc-2000-h3">The Beginning of a Dream</h3>
+            <p data-i18n="tc-2000-p">SNE Beauty House Was Established</p>
+            <span class="tc-link" data-i18n="tc-link">View Story →</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-year="2007" onclick="goFromTimeline('year-2007', event)">
+          <div class="timeline-node"><span>2007</span></div>
+          <div class="timeline-card brk">
+            <div class="tc-year serif">2007</div>
+            <h3 data-i18n="tc-2007-h3">Brand Transformation</h3>
+            <p data-i18n="tc-2007-p">From Representing Brands to Creating Our Own</p>
+            <span class="tc-link" data-i18n="tc-link">View Story →</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-year="2009" onclick="goFromTimeline('year-2009', event)">
+          <div class="timeline-node"><span>'09-10</span></div>
+          <div class="timeline-card brk">
+            <div class="tc-year serif">2009–2010</div>
+            <h3 data-i18n="tc-2009-h3">Steady Expansion &amp; Continued Growth</h3>
+            <p data-i18n="tc-2009-p">The Ipoh &amp; Bukit Mertajam Branches Were Established</p>
+            <span class="tc-link" data-i18n="tc-link">View Story →</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-year="2013" onclick="goFromTimeline('year-2013', event)">
+          <div class="timeline-node"><span>2013</span></div>
+          <div class="timeline-card brk">
+            <div class="tc-year serif">2013</div>
+            <h3 data-i18n="tc-2013-h3">A New Stage of Growth</h3>
+            <p data-i18n="tc-2013-p">A Complete Upgrade at Gurney Plaza</p>
+            <span class="tc-link" data-i18n="tc-link">View Story →</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-year="2014" onclick="goFromTimeline('year-2014', event)">
+          <div class="timeline-node"><span>2014</span></div>
+          <div class="timeline-card brk">
+            <div class="tc-year serif">2014</div>
+            <h3 data-i18n="tc-2014-h3">Brand Upgrade</h3>
+            <p data-i18n="tc-2014-p">A New Location in Butterworth</p>
+            <span class="tc-link" data-i18n="tc-link">View Story →</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-year="2026" onclick="goFromTimeline('year-2026', event)">
+          <div class="timeline-node"><span>2026</span></div>
+          <div class="timeline-card brk">
+            <div class="tc-year serif">2026</div>
+            <h3 data-i18n="tc-2026-h3">A New Era of Wellness</h3>
+            <p data-i18n="tc-2026-p">Penang Wellness Was Officially Established</p>
+            <span class="tc-link" data-i18n="tc-link">View Story →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- YEAR 2000 -->
+  <div class="page yr" id="page-year-2000" data-year="2000">
+    <div class="yr-timeline">
+      <div class="yt-line"></div>
+      <div class="yt-node current" onclick="go('year-2000')"><span>2000</span></div>
+      <div class="yt-node" onclick="go('year-2007')"><span>2007</span></div>
+      <div class="yt-node" onclick="go('year-2009')"><span>'09-10</span></div>
+      <div class="yt-node" onclick="go('year-2013')"><span>2013</span></div>
+      <div class="yt-node" onclick="go('year-2014')"><span>2014</span></div>
+      <div class="yt-node" onclick="go('year-2026')"><span>2026</span></div>
+    </div>
+    <div class="yr-main">
+    <div class="eyebrow" data-i18n="y2000-eyebrow">Our Journey / 2000</div>
+    <div class="yr-num">2000</div>
+    <h2 class="serif" data-i18n="tc-2000-h3">The Beginning of a Dream</h2>
+    <p class="subhead" data-i18n="tc-2000-p">SNE Beauty House Was Established</p>
+    <div class="yr-content split">
+      <div class="body-col">
+        <p data-i18n="y2000-p1">It all began with a passion for beauty.</p>
+        <p data-i18n="y2000-p2">The founder established SNE Beauty House in Bukit Jambul, Penang, beginning her entrepreneurial journey by providing professional beauty services, including slimming, bust enhancement, body-shaping lingerie and eyelash services.</p>
+        <p data-i18n="y2000-p3">The company also represented several international beauty brands, including MFII, Natural Push Up and Lanni Jojoba Oil.</p>
+        <p data-i18n="y2000-p4">In the early days, the team consisted of only two members. Yet, with an unwavering commitment to professionalism, integrity and attentive service, they earned the trust of their customers one step at a time, laying a strong foundation for the brand's future development.</p>
+      </div>
+      <div class="photo-grid stack-v">
+        <div class="photo-slot brk"><img src="assets/images/2000display.png" alt="2000 photo 1" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2000-1.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="assets/images/2000display2.png" alt="2000 photo 2" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2000-2.jpg</span></div></div>
+      </div>
+    </div>
+    <div class="yr-nav">
+      <button class="btn ghost" onclick="goHome()">← <span data-i18n="nav-timeline">Timeline</span></button>
+      <button class="btn" onclick="go('year-2007')">2007 →</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- YEAR 2007 -->
+  <div class="page yr" id="page-year-2007" data-year="2007">
+    <div class="yr-timeline">
+      <div class="yt-line"></div>
+      <div class="yt-node" onclick="go('year-2000')"><span>2000</span></div>
+      <div class="yt-node current" onclick="go('year-2007')"><span>2007</span></div>
+      <div class="yt-node" onclick="go('year-2009')"><span>'09-10</span></div>
+      <div class="yt-node" onclick="go('year-2013')"><span>2013</span></div>
+      <div class="yt-node" onclick="go('year-2014')"><span>2014</span></div>
+      <div class="yt-node" onclick="go('year-2026')"><span>2026</span></div>
+    </div>
+    <div class="yr-main">
+    <div class="eyebrow" data-i18n="y2007-eyebrow">Our Journey / 2007</div>
+    <div class="yr-num">2007</div>
+    <h2 class="serif" data-i18n="tc-2007-h3">Brand Transformation</h2>
+    <p class="subhead" data-i18n="tc-2007-p">From Representing Brands to Creating Our Own</p>
+    <div class="yr-content split">
+      <div class="body-col">
+        <p data-i18n="y2007-p1">The brand was officially upgraded to Ruyi and relocated to Gurney Plaza, marking the beginning of a new chapter.</p>
+        <p class="quote-lead" data-i18n="y2007-quote-lead">The founder has always believed:</p>
+        <blockquote class="founder-quote" data-i18n="y2007-quote">"Do not simply represent other people's brands. Create a brand of your own."</blockquote>
+        <p data-i18n="y2007-p3">Guided by this belief, she travelled extensively around the world to learn about advanced international technologies and health management concepts, and subsequently established several proprietary brands:</p>
+        <p class="brand-list" data-i18n="y2007-brands">• Zéll-V&nbsp;&nbsp;&nbsp;• NPU&nbsp;&nbsp;&nbsp;• BeJojoba</p>
+        <p data-i18n="y2007-p4">At the same time, advanced sub-health screening technology was introduced, leading the brand beyond traditional beauty services and into science-based health management, opening a new direction for its development.</p>
+      </div>
+      <div class="photo-grid stack-v">
+        <div class="photo-slot brk"><img src="assets/images/2007display1.png" alt="2007 photo 1" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2007-1.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="assets/images/2007display2.png" alt="2007 photo 2" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2007-2.jpg</span></div></div>
+      </div>
+    </div>
+    <div class="yr-nav">
+      <button class="btn ghost" onclick="go('year-2000')">← 2000</button>
+      <button class="btn ghost" onclick="goHome()"><span data-i18n="nav-timeline">Timeline</span></button>
+      <button class="btn" onclick="go('year-2009')">2009 →</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- YEAR 2009 -->
+  <div class="page yr" id="page-year-2009" data-year="2009">
+    <div class="yr-timeline">
+      <div class="yt-line"></div>
+      <div class="yt-node" onclick="go('year-2000')"><span>2000</span></div>
+      <div class="yt-node" onclick="go('year-2007')"><span>2007</span></div>
+      <div class="yt-node current" onclick="go('year-2009')"><span>'09-10</span></div>
+      <div class="yt-node" onclick="go('year-2013')"><span>2013</span></div>
+      <div class="yt-node" onclick="go('year-2014')"><span>2014</span></div>
+      <div class="yt-node" onclick="go('year-2026')"><span>2026</span></div>
+    </div>
+    <div class="yr-main">
+    <div class="eyebrow" data-i18n="y2009-eyebrow">Our Journey / 2009 – 2010</div>
+    <div class="yr-num compact">2009–2010</div>
+    <p class="subhead" data-i18n="tc-2009-h3">Steady Expansion &amp; Continued Growth</p>
+    <div class="yr-content two-col">
+      <div class="yr-half">
+        <div class="yh-year serif">2009</div>
+        <h3 class="yh-title" data-i18n="y2009-title">Steady Expansion</h3>
+        <p class="yh-sub" data-i18n="y2009-sub">The Ipoh Branch Was Established</p>
+        <div class="body-col">
+          <p data-i18n="y2009-p">The brand took its first step towards regional expansion, bringing its professional beauty services and health management philosophy to more cities, allowing more people to experience professional and comprehensive care.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-slot brk"><img src="assets/images/2009display1.png" alt="2009 photo" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2009-1.jpg</span></div></div>
+        </div>
+      </div>
+      <div class="yr-half">
+        <div class="yh-year serif">2010</div>
+        <h3 class="yh-title" data-i18n="y2010-title">Continued Growth</h3>
+        <p class="yh-sub" data-i18n="y2010-sub">The Bukit Mertajam Branch Was Established</p>
+        <div class="body-col">
+          <p data-i18n="y2010-p">As the brand continued to grow, its service network expanded and the team grew stronger, allowing more customers to experience professional, reliable and thoughtful health and beauty services.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-slot brk"><img src="assets/images/2010display1.png" alt="2010 photo" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2010-1.jpg</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="yr-nav">
+      <button class="btn ghost" onclick="go('year-2007')">← 2007</button>
+      <button class="btn ghost" onclick="goHome()"><span data-i18n="nav-timeline">Timeline</span></button>
+      <button class="btn" onclick="go('year-2013')">2013 →</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- YEAR 2013 -->
+  <div class="page yr" id="page-year-2013" data-year="2013">
+    <div class="yr-timeline">
+      <div class="yt-line"></div>
+      <div class="yt-node" onclick="go('year-2000')"><span>2000</span></div>
+      <div class="yt-node" onclick="go('year-2007')"><span>2007</span></div>
+      <div class="yt-node" onclick="go('year-2009')"><span>'09-10</span></div>
+      <div class="yt-node current" onclick="go('year-2013')"><span>2013</span></div>
+      <div class="yt-node" onclick="go('year-2014')"><span>2014</span></div>
+      <div class="yt-node" onclick="go('year-2026')"><span>2026</span></div>
+    </div>
+    <div class="yr-main">
+    <div class="eyebrow" data-i18n="y2013-eyebrow">Our Journey / 2013</div>
+    <div class="yr-num">2013</div>
+    <h2 class="serif" data-i18n="tc-2013-h3">A New Stage of Growth</h2>
+    <p class="subhead" data-i18n="tc-2013-p">A Complete Upgrade at Gurney Plaza</p>
+    <div class="yr-content split">
+      <div class="body-col">
+        <p data-i18n="y2013-p1">As the number of customers continued to increase, the Gurney Plaza branch expanded from approximately 480 square feet to approximately 2,000 square feet.</p>
+        <p data-i18n="y2013-p2">This represented more than an expansion of space. It symbolised the growing strength of the brand and the market's strong recognition of Ruyi, while also reflecting the founder's spirit of continuous innovation and her determination to keep moving beyond boundaries.</p>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-slot brk"><img src="assets/images/2013display1.png" alt="2013 photo 1" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2013-1.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="assets/images/2013display2.png" alt="2013 photo 2" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2013-2.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="assets/images/2013display3.png" alt="2013 photo 3" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2013-3.jpg</span></div></div>
+      </div>
+    </div>
+    <div class="yr-nav">
+      <button class="btn ghost" onclick="go('year-2009')">← 2009</button>
+      <button class="btn ghost" onclick="goHome()"><span data-i18n="nav-timeline">Timeline</span></button>
+      <button class="btn" onclick="go('year-2014')">2014 →</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- YEAR 2014 -->
+  <div class="page yr" id="page-year-2014" data-year="2014">
+    <div class="yr-timeline">
+      <div class="yt-line"></div>
+      <div class="yt-node" onclick="go('year-2000')"><span>2000</span></div>
+      <div class="yt-node" onclick="go('year-2007')"><span>2007</span></div>
+      <div class="yt-node" onclick="go('year-2009')"><span>'09-10</span></div>
+      <div class="yt-node" onclick="go('year-2013')"><span>2013</span></div>
+      <div class="yt-node current" onclick="go('year-2014')"><span>2014</span></div>
+      <div class="yt-node" onclick="go('year-2026')"><span>2026</span></div>
+    </div>
+    <div class="yr-main">
+    <div class="eyebrow" data-i18n="y2014-eyebrow">Our Journey / 2014</div>
+    <div class="yr-num">2014</div>
+    <h2 class="serif" data-i18n="tc-2014-h3">Brand Upgrade</h2>
+    <p class="subhead" data-i18n="tc-2014-p">A New Location in Butterworth</p>
+    <div class="yr-content split">
+      <div class="body-col">
+        <p data-i18n="y2014-p1">The Bukit Mertajam branch officially relocated to a prime location in Butterworth, with comprehensive upgrades to its service environment, professional equipment and brand image, establishing a stronger foundation for the brand's future development.</p>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-slot brk"><img src="assets/images/2014display1.png" alt="2014 photo 1" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2014-1.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="assets/images/2014display2.png" alt="2014 photo 2" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2014-2.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="assets/images/2014display3.png" alt="2014 photo 3" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2014-3.jpg</span></div></div>
+      </div>
+    </div>
+    <div class="yr-nav">
+      <button class="btn ghost" onclick="go('year-2013')">← 2013</button>
+      <button class="btn ghost" onclick="goHome()"><span data-i18n="nav-timeline">Timeline</span></button>
+      <button class="btn" onclick="go('year-2026')">2026 →</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- YEAR 2026 -->
+  <div class="page yr" id="page-year-2026" data-year="2026">
+    <div class="yr-timeline">
+      <div class="yt-line"></div>
+      <div class="yt-node" onclick="go('year-2000')"><span>2000</span></div>
+      <div class="yt-node" onclick="go('year-2007')"><span>2007</span></div>
+      <div class="yt-node" onclick="go('year-2009')"><span>'09-10</span></div>
+      <div class="yt-node" onclick="go('year-2013')"><span>2013</span></div>
+      <div class="yt-node" onclick="go('year-2014')"><span>2014</span></div>
+      <div class="yt-node current" onclick="go('year-2026')"><span>2026</span></div>
+    </div>
+    <div class="yr-main">
+    <div class="eyebrow" data-i18n="y2026-eyebrow">Our Journey / 2026</div>
+    <div class="yr-num">2026</div>
+    <h2 class="serif" data-i18n="tc-2026-h3">A New Era of Wellness</h2>
+    <p class="subhead" data-i18n="tc-2026-p">Penang Wellness Was Officially Established</p>
+    <div class="yr-content split">
+      <div class="body-col">
+        <p data-i18n="y2026-p1">The Butterworth and Gurney branches were officially integrated to establish Penang Wellness, marking a new milestone in the brand's journey.</p>
+        <p data-i18n="y2026-p2">This represents the culmination of the founder's twenty-six years of continuous learning, ongoing innovation and courage to break new ground.</p>
+        <p data-i18n="y2026-p3">From a small beauty salon in Bukit Jambul to today's one-stop health centre integrating Wellness, precision health management and regenerative medicine, every step of the journey has been shaped by perseverance, conviction and vision.</p>
+        <p data-i18n="y2026-p4">Today, we not only help our customers pursue beauty, but also hope to accompany every individual towards a healthier, more youthful and vibrant life.</p>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-slot brk"><img src="assets/images/2026display1.png" alt="2026 photo 1" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2026-1.jpg</span></div></div>
+        <div class="photo-slot brk"><img src="images/2026-2.jpg" alt="2026 photo 2" onerror="this.closest('.photo-slot').classList.add('img-missing')"><div class="placeholder-fallback"><span>📷</span><span>images/2026-2.jpg</span></div></div>
+      </div>
+    </div>
+    <div class="yr-nav">
+      <button class="btn ghost" onclick="go('year-2014')">← 2014</button>
+      <button class="btn ghost" onclick="goHome()"><span data-i18n="nav-timeline">Timeline</span></button>
+      <button class="btn" onclick="go('tbc')"><span data-i18n="nav-next">Next</span> →</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- TO BE CONTINUED -->
+  <div class="page" id="page-tbc">
+    <div class="tbc-inner reveal">
+      <div class="tbc-text-wrap" id="tbcTextWrap" role="heading" aria-level="1" aria-label="To be Continued...">
+        <canvas id="tbcCanvas"></canvas>
+      </div>
+    </div>
+    <button class="btn tbc-return" id="tbcReturnBtn" onclick="vaporizeAndReturn()"><span data-i18n="nav-return-vision">Return to Vision</span></button>
+  </div>
+
+  <div id="idleBar"></div>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</div>
+
+<script src="zellv_journey.js"></script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from "three";
+
+// Ported from a React/Three.js "shader-animation" component: same vertex/fragment
+// GLSL, mounted directly into a plain <div> since this project has no build step.
+const vertexShader = `
+  void main() {
+    gl_Position = vec4( position, 1.0 );
+  }
+`;
+
+const fragmentShader = `
+  #define TWO_PI 6.2831853072
+  #define PI 3.14159265359
+
+  precision highp float;
+  uniform vec2 resolution;
+  uniform float time;
+
+  void main(void) {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+    float t = time*0.05;
+    float lineWidth = 0.006;
+
+    vec3 color = vec3(0.0);
+    for(int j = 0; j < 3; j++){
+      for(int i=0; i < 5; i++){
+        color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*5.0 - length(uv) + mod(uv.x+uv.y, 0.2));
+      }
+    }
+
+    gl_FragColor = vec4(color[0],color[1],color[2],1.0);
+  }
+`;
+
+function initShaderBackground(containerId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+
+  const camera = new THREE.Camera();
+  camera.position.z = 1;
+
+  const scene = new THREE.Scene();
+  const geometry = new THREE.PlaneGeometry(2, 2);
+
+  const uniforms = {
+    time: { value: 1.0 },
+    resolution: { value: new THREE.Vector2() },
+  };
+
+  const material = new THREE.ShaderMaterial({ uniforms, vertexShader, fragmentShader });
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  function onResize(){
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    if(!width || !height) return;
+    renderer.setSize(width, height);
+    uniforms.resolution.value.x = renderer.domElement.width;
+    uniforms.resolution.value.y = renderer.domElement.height;
+  }
+  onResize();
+  window.addEventListener("resize", onResize);
+
+  let rafId;
+  function animate(){
+    rafId = requestAnimationFrame(animate);
+    uniforms.time.value += 0.05;
+    renderer.render(scene, camera);
+  }
+  animate();
+}
+
+initShaderBackground("shaderBg");
+</script>
+
+</body>
+</html>
