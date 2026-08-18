@@ -669,3 +669,165 @@ html,body{margin:0; padding:0; height:100%; overflow:hidden; background:var(--cr
   animation:sweepAcross .5s ease-out forwards;
 }
 @keyframes sweepAcross{ to{ transform:translateX(100%); } }
+
+/* ---- Malaysia outlet map ---- */
+#page-map{
+  /* no position override here — .page already sets position:absolute;
+     inset:0, which both locks this page to the viewport AND is a valid
+     containing block for the ::before/::after glow layers below. Adding
+     position:relative here previously overrode that back to relative,
+     which broke the viewport-lock and silently killed the scroll fix. */
+  display:flex; flex-direction:column; overflow:hidden;
+  padding:0;
+}
+/* Soft gold glow centered behind the map, plus a faint dotted-grid
+   texture — a quiet nod to "map/exploration" without literally reusing a
+   navigation-chart look, kept subtle enough to stay behind the pins. */
+#page-map::before{
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at 50% 40%, rgba(170,137,46,.16), transparent 60%);
+}
+#page-map::after{
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:radial-gradient(circle, var(--gold) 1px, transparent 1.4px);
+  background-size:24px 24px;
+  opacity:.07;
+}
+/* Scroll container lives one level in from the .page element itself —
+   mirrors .vision-scroll, which is the pattern already proven to scroll
+   reliably on the kiosk's touchscreen. Putting overflow-y:auto directly on
+   .page didn't work, likely because .page also carries an active transform
+   (translateY/scale) for its enter transition, and transform + overflow:auto
+   on the same element is a known touch-scroll gotcha in Chromium. */
+.map-scroll{
+  position:relative; z-index:1;
+  flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none; -ms-overflow-style:none;
+  display:flex; flex-direction:column; align-items:center;
+  padding:70px 46px 60px;
+  touch-action:pan-y;
+}
+.map-scroll::-webkit-scrollbar{ display:none; width:0; height:0; }
+.map-wrap{
+  width:100%; max-width:1000px; display:flex; flex-direction:column; align-items:center; gap:6px;
+  flex:0 0 auto;
+}
+.map-header{ text-align:center; flex:0 0 auto; }
+.map-header .eyebrow{ font-size:15px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+.map-header h2{ font-weight:700; font-size:clamp(28px,3.6vw,42px); margin:6px 0 4px; color:var(--ink); }
+.map-sub{ font-size:17px; color:var(--ink-dim); margin:0; }
+
+.my-map{
+  position:relative; width:100%; flex:0 0 auto;
+  aspect-ratio:281.7/326.8; margin:14px auto 0;
+  transition:transform .42s cubic-bezier(.2,.8,.2,1);
+}
+.my-map.zooming{ transform:scale(2.6); z-index:5; }
+.my-map-svg{ position:absolute; inset:0; width:100%; height:100%; }
+.my-landmass{
+  fill:var(--cream-2); stroke:var(--gold); stroke-width:.7; stroke-opacity:.5;
+  stroke-linejoin:round;
+}
+.my-map-svg{ filter:drop-shadow(0 6px 18px rgba(170,137,46,.15)); }
+
+.state-pin{
+  position:absolute; transform:translate(-50%, -50%);
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+  background:none; border:none; padding:8px; margin:-8px; cursor:pointer;
+  font-family:'Poppins', sans-serif;
+  touch-action:pan-y;
+}
+.state-pin .pin-dot{
+  width:12px; height:12px; border-radius:50%;
+  background:var(--ink-dim); opacity:.55;
+  box-shadow:0 0 0 4px var(--cream);
+  transition:transform .2s ease, background .2s ease, opacity .2s ease;
+}
+.state-pin .pin-label{
+  font-size:13px; font-weight:600; color:var(--ink-dim); letter-spacing:.02em;
+  white-space:nowrap; transition:color .2s ease;
+}
+.state-pin .pin-soon{
+  font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep);
+  opacity:.6; white-space:nowrap;
+}
+.state-pin:active .pin-dot{ transform:scale(1.3); }
+.state-pin:hover .pin-dot{ opacity:.8; }
+
+/* Plain (not yet planned) states: just a dot on the map, no name/label
+   clutter — only the highlighted + Penang pins are called out by name. */
+.state-pin:not(.active):not(.highlight) .pin-label,
+.state-pin:not(.active):not(.highlight) .pin-soon{ display:none; }
+
+/* Highlighted locations (planned expansion, not yet live): brighter gold
+   than the dim default pins, but no pulsing ring — that's reserved for
+   Penang, the one location that's actually clickable. */
+.state-pin.highlight .pin-dot{
+  background:radial-gradient(circle at 32% 28%, #fff6df, var(--gold-light) 40%, var(--gold) 75%, var(--gold-deep) 100%);
+  opacity:.85;
+}
+.state-pin.highlight .pin-label{ color:var(--gold-deep); font-weight:700; }
+.state-pin.highlight:hover .pin-dot{ opacity:1; transform:scale(1.08); }
+
+/* Penang: the one live outlet — bright, pulsing, clearly the thing to tap */
+.state-pin.active .pin-dot{
+  width:14px; height:14px;
+  background:radial-gradient(circle at 32% 28%, #fff6df, var(--gold-light) 40%, var(--gold) 75%, var(--gold-deep) 100%);
+  opacity:1;
+}
+.state-pin.active .pin-label{ color:var(--gold-deep); font-size:16px; font-weight:700; }
+.state-pin.active:hover .pin-dot{ transform:scale(1.12); }
+.state-pin.active .pin-ring{
+  position:absolute; top:8px; left:50%; width:14px; height:14px; margin-left:-7px;
+  border-radius:50%; background:var(--gold); opacity:.5;
+  animation:pinPulse 2.2s ease-out infinite;
+}
+@keyframes pinPulse{
+  0%{ transform:scale(1); opacity:.55; }
+  100%{ transform:scale(3.2); opacity:0; }
+}
+
+/* Outlet-photo thumbnail sitting beside each highlighted pin — drop a
+   same-name file into assets/images to fill it in; until then it shows a
+   placeholder like every other photo slot on the site. Sits to whichever
+   side (.side-left/.side-right) keeps it clear of the map edge. */
+.pin-photo{
+  position:absolute; top:0; left:0;
+  --tx:0px; --ty:-50%;
+  transform:translate(var(--tx), var(--ty));
+  width:172px; height:129px; border-radius:8px; overflow:hidden;
+  background:var(--cream-2); border:1px solid var(--line);
+  box-shadow:0 6px 18px rgba(170,137,46,.22);
+  pointer-events:none; z-index:3;
+}
+.pin-photo.side-right{ --tx:56px; }
+.pin-photo.side-left{ --tx:calc(-100% - 56px); }
+.pin-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.pin-photo .placeholder-fallback{
+  display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center;
+  gap:4px; color:var(--gold-deep); font-size:10px; letter-spacing:.04em; text-align:center; padding:6px;
+}
+.pin-photo.img-missing img{ display:none; }
+.pin-photo.img-missing .placeholder-fallback{ display:flex; }
+
+.coming-soon-toast{
+  position:fixed; left:50%; bottom:40px; transform:translate(-50%, 16px);
+  background:var(--ink); color:#fff; padding:12px 26px; border-radius:30px;
+  font-size:15px; font-weight:600; letter-spacing:.02em;
+  opacity:0; pointer-events:none; z-index:200;
+  transition:opacity .25s ease, transform .25s ease;
+  box-shadow:0 10px 28px rgba(0,0,0,.25);
+}
+.coming-soon-toast.visible{ opacity:1; transform:translate(-50%, 0); }
+
+@media (max-width: 900px){
+  .map-scroll{ padding:56px 20px 40px; }
+  .state-pin .pin-dot{ width:9px; height:9px; }
+  .state-pin.active .pin-dot{ width:11px; height:11px; }
+  .state-pin .pin-label{ font-size:10.5px; }
+  .state-pin.active .pin-label{ font-size:12.5px; }
+  .state-pin .pin-soon{ display:none; }
+  .pin-photo{ width:116px; height:87px; }
+  .pin-photo.side-right{ --tx:34px; }
+  .pin-photo.side-left{ --tx:calc(-100% - 34px); }
+}
